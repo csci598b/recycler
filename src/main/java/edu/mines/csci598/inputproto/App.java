@@ -7,7 +7,7 @@ import javax.swing.JFrame;
  */
 public class App {
    public static void main(String[] args) {
-      //Pointer pointer = new Pointer(1);
+      //Pointer pointer = new Pointer();
       //System.out.println(pointer);
 
       //Position position = new Position(1, 2, 3.0, 4.0, 5.0, 6.0);
