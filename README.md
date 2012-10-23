@@ -22,3 +22,5 @@ This is the recycler game for CSCI 598B.
 1. Create a jar file.
 2. java -jar target/recycler-exe.jar
 
+# Travis CI
+https://travis-ci.org/#!/csci598b/recycler
