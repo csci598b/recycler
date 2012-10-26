@@ -35,7 +35,7 @@ class Gore extends GameObject {
     }
   }
 
-  private static final Particle particles[] = new Particle[64];
+  private final Particle particles[] = new Particle[256];
   private final GameManager game;
 
   public Gore(GameManager game, GameField field, GameObject src) {
