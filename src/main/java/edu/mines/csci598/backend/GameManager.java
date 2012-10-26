@@ -146,22 +146,39 @@ implements Destroyable, Runnable {
   /**
    * Translates from virtual coordinates to pixels on the Y axis.
    */
-  int vcytopx(float vc) {
+  public int vcytopx(float vc) {
     return (int)((1.0f - vc/vheight())*frame.getHeight());
   }
 
   /**
    * Translates from pixel coordinates to virtual coordinates on the X axis.
    */
-  float pxvtovc(int px) {
+  public float pxvtovc(int px) {
     return px / (float)frame.getWidth();
   }
 
   /**
    * Translates from pixel coordinates to virtual coordinates on the Y axis.
    */
-  float pxytovc(int px) {
+  public float pxytovc(int px) {
     return (frame.getHeight()-1 - px)/(float)frame.getHeight() * vheight();
+  }
+
+  /**
+   * Converts a dimension along the X axis in virtual coordinates to pixels.
+   */
+  public int vdxtopx(float vc) {
+    return (int)(vc * frame.getWidth());
+  }
+
+  /**
+   * Converts a dimension along the Y axis in virtual coordinates to pixels.
+   *
+   * Note that the sign of the result will be opposite the input, since the Y
+   * axes of the two coordinate systems are reverse.
+   */
+  public int vdytopx(float vc) {
+    return -(int)(vc/vheight() * frame.getHeight());
   }
 
   /**
