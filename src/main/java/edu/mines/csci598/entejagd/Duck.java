@@ -33,7 +33,9 @@ public class Duck extends GameObject {
 
   public void shoot(float x, float y) {
     float dx = x-this.x, dy = y-this.y;
-    if (dx*dx + dy*dy < RADIUS*RADIUS)
+    if (dx*dx + dy*dy < RADIUS*RADIUS) {
       alive = false;
+      field.add(new Gore(game, field, this));
+    }
   }
 }
