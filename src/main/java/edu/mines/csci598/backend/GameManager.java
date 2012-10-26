@@ -39,7 +39,7 @@ implements Destroyable, Runnable {
    */
   public GameManager(String title) {
     screen.installNullRepaintManager();
-    screen.setFullScreen(screen.getCurrentDisplayMode());
+    screen.setFullScreen(null);
     frame = (JFrame)screen.getFullScreenWindow();
     frame.setTitle(title);
 
