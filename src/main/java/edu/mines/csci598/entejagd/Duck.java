@@ -7,7 +7,7 @@ import edu.mines.csci598B.backend.GameManager;
 public class Duck extends GameObject {
   private final float velocity;
   private final GameManager game;
-  private static final float RADIUS = 0.075f;
+  private static final float RADIUS = 0.075f/2.0f;
 
   public Duck(GameManager game, GameField field) {
     super(field,
@@ -25,10 +25,10 @@ public class Duck extends GameObject {
 
   public void draw(Graphics2D g) {
     g.setColor(Color.yellow);
-    g.fillOval(game.vcxtopx(x - RADIUS/2),
-               game.vcytopx(y - RADIUS/2) + game.vdytopx(RADIUS),
-               game.vdxtopx(RADIUS),
-               -game.vdytopx(RADIUS));
+    g.fillOval(game.vcxtopx(x - RADIUS),
+               game.vcytopx(y - RADIUS) + game.vdytopx(RADIUS*2),
+               game.vdxtopx(RADIUS*2),
+               -game.vdytopx(RADIUS*2));
   }
 
   public void shoot(float x, float y) {
