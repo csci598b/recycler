@@ -31,8 +31,9 @@ public class Entejagd extends GameState {
                game.vdxtopx(1), -game.vdytopx(0.3f*game.vheight()));
     g.setColor(Color.blue.brighter());
     g.fillRect(game.vcxtopx(0),
-               game.vcytopx(0.3f*game.vheight())+game.vdytopx(0.7f*game.vheight()),
-               game.vdxtopx(1), -game.vdytopx(0.7f*game.vheight()));
+               game.vcytopx(0.3f*game.vheight()) +
+                 game.vdytopx(0.7f*game.vheight()),
+               game.vdxtopx(1), -game.vdytopx(0.7f*game.vheight())+1);
     field.draw(g);
 
     g.setColor(Color.white);
