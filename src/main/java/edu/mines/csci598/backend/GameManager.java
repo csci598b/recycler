@@ -11,6 +11,14 @@ import java.lang.ref.WeakReference;
 /**
  * The GameManager manages resources and system compatibility, and orchestrates
  * interactions between different components.
+ *
+ * The primary coordinate system used by this class and the rest of the backend
+ * are virtual coordinates, where the bottom left of the window is the origin,
+ * (1.0,0) is the bottom right, and (0,vheight()) is the top left, where
+ * vheight() is some float such that and nXn region of the screen is
+ * square. See vcxtopx, vcytopx, pxxtovc, and pxytovc to convert between this
+ * coordinate system and the raw pixels of the window (for which (0,0) is the
+ * top left).
  */
 public final class GameManager
 implements Destroyable, Runnable {
@@ -127,6 +135,33 @@ implements Destroyable, Runnable {
    */
   public final float vheight() {
     return frame.getHeight() / (float)frame.getWidth();
+  }
+
+  /**
+   * Translates from virtual coordinates to pixels on the X axis.
+   */
+  public int vcxtopx(float vc) {
+    return (int)(vc*frame.getWidth());
+  }
+  /**
+   * Translates from virtual coordinates to pixels on the Y axis.
+   */
+  int vcytopx(float vc) {
+    return (int)((1.0f - vc/vheight())*frame.getHeight());
+  }
+
+  /**
+   * Translates from pixel coordinates to virtual coordinates on the X axis.
+   */
+  float pxvtovc(int px) {
+    return px / (float)frame.getWidth();
+  }
+
+  /**
+   * Translates from pixel coordinates to virtual coordinates on the Y axis.
+   */
+  float pxytovc(int px) {
+    return (frame.getHeight()-1 - px)/(float)frame.getHeight() * vheight();
   }
 
   /**
