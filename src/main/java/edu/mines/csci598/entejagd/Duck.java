@@ -3,6 +3,7 @@ package edu.mines.csci598B.entejagd;
 import java.awt.Color;
 import java.awt.Graphics2D;
 import edu.mines.csci598B.backend.GameManager;
+import edu.mines.csci598B.backend.SoundEffect;
 
 public class Duck extends GameObject {
   private final float velocity;
@@ -36,6 +37,9 @@ public class Duck extends GameObject {
     if (dx*dx + dy*dy < RADIUS*RADIUS) {
       alive = false;
       field.add(new Gore(game, field, this));
+      //TODO: Get this from the jar somehow
+      SoundEffect.play("src/resources/sounds/wilhelm.pcm",
+                       game.getAudioPlayer(), (short)0x7FFF);
     }
   }
 }
