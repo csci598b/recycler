@@ -10,7 +10,7 @@ import edu.mines.csci598B.backend.GameManager;
 class Gore extends GameObject {
   private static final class Particle {
     private static final float INITV = 0.5f;
-    private static final float GRAVITY = 0.3f;
+    private static final float GRAVITY = 0.5f;
     public float x, y, vx, vy;
 
     Particle(float x, float y) {
