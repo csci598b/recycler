@@ -49,6 +49,13 @@ implements Destroyable, Runnable {
           alive = false;
         }
       });
+    frame.addKeyListener(new KeyAdapter() {
+        @Override
+        public void keyPressed(KeyEvent e) {
+          if (e.getKeyCode() == KeyEvent.VK_ESCAPE)
+            alive = false;
+        }
+      });
 
     audioPlayer.start();
   }
