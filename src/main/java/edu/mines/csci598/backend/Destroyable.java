@@ -1,4 +1,4 @@
-package edu.mines.csci598B.backend;
+package edu.mines.csci598.backend;
 
 /**
  * Describes a resource that needs to be manually released.

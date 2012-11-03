@@ -1,9 +1,9 @@
-package edu.mines.csci598B.entejagd;
+package edu.mines.csci598.entejagd;
 
 import java.awt.Color;
 import java.awt.Graphics2D;
-import edu.mines.csci598B.backend.GameManager;
-import edu.mines.csci598B.backend.SoundEffect;
+import edu.mines.csci598.backend.GameManager;
+import edu.mines.csci598.backend.SoundEffect;
 
 public class Duck extends GameObject {
   private final float velocity;

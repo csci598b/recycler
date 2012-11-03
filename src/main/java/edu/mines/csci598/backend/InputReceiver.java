@@ -1,4 +1,4 @@
-package edu.mines.csci598B.backend;
+package edu.mines.csci598.backend;
 
 /**
  * Interface for clases which can process input events.

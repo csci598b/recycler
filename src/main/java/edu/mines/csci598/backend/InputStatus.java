@@ -1,4 +1,4 @@
-package edu.mines.csci598B.backend;
+package edu.mines.csci598.backend;
 
 /**
  * Describes the state of the abstracted input system.

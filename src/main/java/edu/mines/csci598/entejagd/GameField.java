@@ -1,4 +1,4 @@
-package edu.mines.csci598B.entejagd;
+package edu.mines.csci598.entejagd;
 
 import java.awt.Graphics2D;
 import java.util.*;

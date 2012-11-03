@@ -1,4 +1,4 @@
-package edu.mines.csci598B.entejagd;
+package edu.mines.csci598.entejagd;
 
 public abstract class GameObject {
   protected final GameField field;

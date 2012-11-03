@@ -1,4 +1,4 @@
-package edu.mines.csci598B.backend;
+package edu.mines.csci598.backend;
 
 /**
  * Describes an object which can convert external stimuli into InputEvents.

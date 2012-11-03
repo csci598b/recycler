@@ -1,4 +1,4 @@
-package edu.mines.csci598B.backend;
+package edu.mines.csci598.backend;
 
 /**
  * Represents a source of audio data, conforming to AudioPlayer.FORMAT.

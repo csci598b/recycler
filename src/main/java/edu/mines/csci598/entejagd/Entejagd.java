@@ -1,9 +1,9 @@
-package edu.mines.csci598B.entejagd;
+package edu.mines.csci598.entejagd;
 
 import java.awt.Color;
 import java.awt.Graphics2D;
 
-import edu.mines.csci598B.backend.*;
+import edu.mines.csci598.backend.*;
 
 public class Entejagd extends GameState {
   private final GameManager game;
