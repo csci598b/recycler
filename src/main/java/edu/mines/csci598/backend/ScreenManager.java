@@ -38,6 +38,7 @@ import javax.swing.*;
 public class ScreenManager {
   private GraphicsDevice device;
   private DisplayMode oldMode;
+  private JFrame frame;
 
   /**
     The NullRepaintManager is a RepaintManager that doesn't do anything. Useful
@@ -165,16 +166,25 @@ public class ScreenManager {
       with this device, or if the display mode cannot be
       changed on this system, the current display mode is used.
       <p>
+      If the displayMode is null, the window is not actually made full-screen.
+      <p>
       The display uses a BufferStrategy with 2 buffers.
   */
   public void setFullScreen(DisplayMode displayMode) {
-    final JFrame frame=new JFrame();
+    frame=new JFrame();
     frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     frame.setUndecorated(true);
     frame.setIgnoreRepaint(true);
     frame.setResizable(false);
 
-    device.setFullScreenWindow(frame);
+    if (displayMode != null) {
+      device.setFullScreenWindow(frame);
+    } else {
+      DisplayMode curr = getCurrentDisplayMode();
+      //Set the size to something a little smaller than the full screen size
+      frame.setSize(curr.getWidth()-64, curr.getHeight()-64);
+      frame.setVisible(true);
+    }
 
     if (displayMode != null && device.isDisplayChangeSupported()) {
       try {
@@ -224,10 +234,13 @@ public class ScreenManager {
       The application must dispose of the graphics object.
   */
   public Graphics2D getGraphics() {
-    Window window=device.getFullScreenWindow();
+    Window window=frame;
     if (window!=null) {
       BufferStrategy strategy=window.getBufferStrategy();
-      return (Graphics2D)strategy.getDrawGraphics();
+      if (strategy != null)
+        return (Graphics2D)strategy.getDrawGraphics();
+      else
+        return (Graphics2D)window.getGraphics();
     } else {
       return null;
     }
@@ -238,7 +251,7 @@ public class ScreenManager {
       Updates the display.
   */
   public void update() {
-    Window window=device.getFullScreenWindow();
+    Window window=frame;
     if (window!=null) {
       BufferStrategy strategy=window.getBufferStrategy();
       if (!strategy.contentsLost()) {
@@ -256,7 +269,7 @@ public class ScreenManager {
       Returns null if the device is not in full screen mode.
   */
   public JFrame getFullScreenWindow() {
-    return (JFrame)device.getFullScreenWindow();
+    return frame;
   }
 
 
@@ -266,7 +279,7 @@ public class ScreenManager {
       screen mode.
   */
   public int getWidth() {
-    Window window=device.getFullScreenWindow();
+    Window window=frame;
     if (window!=null) return window.getWidth();
     else              return 0;
   }
@@ -278,7 +291,7 @@ public class ScreenManager {
       screen mode.
   */
   public int getHeight() {
-    Window window=device.getFullScreenWindow();
+    Window window=frame;
     if (window!=null) return window.getHeight();
     else              return 0;
   }
@@ -294,7 +307,7 @@ public class ScreenManager {
       } catch (IllegalArgumentException ex) { }
     }
 
-    Window window=device.getFullScreenWindow();
+    Window window=frame;
     if (window!=null) {
       window.dispose();
     }
@@ -307,7 +320,7 @@ public class ScreenManager {
   */
   public BufferedImage createCompatibleImage(int w, int h,
                                              int transparancy) {
-    Window window=device.getFullScreenWindow();
+    Window window=frame;
     if (window!=null) {
       GraphicsConfiguration gc=window.getGraphicsConfiguration();
       return gc.createCompatibleImage(w, h, transparancy);

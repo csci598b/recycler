@@ -35,11 +35,19 @@ implements Destroyable, Runnable {
     new LinkedList<InputDriver>();
 
   /**
-   * Creates a GameManager using a window with the given title
+   * Equivalent to GameManager(title, true).
    */
   public GameManager(String title) {
+    this(title, true);
+  }
+
+  /**
+   * Creates a GameManager using a window with the given title. The game will
+   * run in full-screen mode iff the second argument is true.
+   */
+  public GameManager(String title, boolean fullScreen) {
     screen.installNullRepaintManager();
-    screen.setFullScreen(null);
+    screen.setFullScreen(fullScreen? screen.getCurrentDisplayMode() : null);
     frame = (JFrame)screen.getFullScreenWindow();
     frame.setTitle(title);
 

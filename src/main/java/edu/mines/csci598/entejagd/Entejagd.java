@@ -55,7 +55,7 @@ public class Entejagd extends GameState {
   }
 
   public static void main(String[] args) {
-    GameManager man = new GameManager("Entejagd");
+    GameManager man = new GameManager("Entejagd", false);
     KeyboardGestureInputDriver kgid = new KeyboardGestureInputDriver();
     kgid.bind(java.awt.event.KeyEvent.VK_SPACE, InputEvent.GESTURE_JUMP);
     man.installInputDriver(kgid);
